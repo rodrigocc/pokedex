@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/pages/pokemon_details_page.dart';
+import 'package:pokemon_consome_api/presenter/pages/pokemon_details_page.dart';
+
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 import 'package:pokemon_consome_api/theme/pokemon_icons.dart';
 

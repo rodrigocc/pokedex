@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/pages/pokedex_page.dart';
+import 'package:pokemon_consome_api/presenter/pages/pokedex_page.dart';
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 
 class InitialPage extends StatefulWidget {

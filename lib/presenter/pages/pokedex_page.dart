@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_consome_api/components/pokedex_app_bar.dart';
 import 'package:pokemon_consome_api/components/pokemon_list_tile.dart';
-import 'package:pokemon_consome_api/controller/http.dart';
-
-import '../components/pokedex_app_bar.dart';
+import 'package:pokemon_consome_api/presenter/controller/http.dart';
 
 class PokeDexPage extends StatefulWidget {
   PokeDexPage({Key? key}) : super(key: key);
