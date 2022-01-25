@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/components/pokedex_app_bar.dart';
-import 'package:pokemon_consome_api/components/pokemon_list_tile.dart';
+import 'package:pokemon_consome_api/presenter/components/pokedex_app_bar.dart';
+import 'package:pokemon_consome_api/presenter/components/pokemon_list_tile.dart';
 import 'package:pokemon_consome_api/presenter/controller/http.dart';
 
 class PokeDexPage extends StatefulWidget {

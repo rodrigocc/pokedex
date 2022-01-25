@@ -24,7 +24,7 @@ class Pokemon {
       name: json['name'],
       img: json['img'],
       number: json['number'],
-      type: json['type'].cast<String>(),
+      type: json['type'] as List<String>,
     );
   }
 }
