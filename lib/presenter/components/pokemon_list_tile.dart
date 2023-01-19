@@ -10,13 +10,13 @@ class PokemonListTile extends StatefulWidget {
   final String number;
   final List<dynamic> type;
 
-  const PokemonListTile(
-      {Key? key,
-      required this.imgUrl,
-      required this.name,
-      required this.number,
-      required this.type})
-      : super(key: key);
+  const PokemonListTile({
+    Key? key,
+    required this.imgUrl,
+    required this.name,
+    required this.number,
+    required this.type,
+  }) : super(key: key);
 
   @override
   _PokemonListTileState createState() => _PokemonListTileState();
