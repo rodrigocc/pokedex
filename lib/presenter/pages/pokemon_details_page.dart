@@ -80,31 +80,31 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
       } else if (type[index] == "Grass") {
         currentColor = Colors.green;
       } else if (type[index] == "Poison") {
-        currentColor = Colors.green;
+        currentColor = Colors.deepPurple;
       } else if (type[index] == "Ice") {
-        currentColor = Colors.red;
+        currentColor = Colors.blueGrey;
       } else if (type[index] == "Flying") {
-        currentColor = Colors.red;
+        currentColor = Colors.lightBlue;
       } else if (type[index] == "Water") {
         currentColor = Colors.blue;
       } else if (type[index] == "Ground") {
-        currentColor = Colors.red;
+        currentColor = Colors.orangeAccent;
       } else if (type[index] == "Rock") {
         currentColor = Colors.brown;
       } else if (type[index] == "Electric") {
         currentColor = Colors.yellowAccent;
       } else if (type[index] == "Normal") {
-        currentColor = Colors.red;
+        currentColor = Colors.grey;
       } else if (type[index] == "Fighting") {
-        currentColor = Colors.red;
+        currentColor = Colors.orange;
       } else if (type[index] == "Bug") {
-        currentColor = Colors.red;
+        currentColor = Colors.greenAccent;
       } else if (type[index][0] == "Psychic") {
-        currentColor = Colors.red;
+        currentColor = Colors.purpleAccent;
       } else if (type[index][0] == "Fairy") {
-        currentColor = Colors.red;
+        currentColor = Colors.yellow;
       } else if (type[index][0] == "Dragon") {
-        currentColor = Colors.red;
+        currentColor = Colors.blueAccent;
       }
     }
     return currentColor;
