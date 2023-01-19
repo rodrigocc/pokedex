@@ -29,13 +29,16 @@ environment:
 dependencies:
   cached_network_image: ^3.1.0
   cupertino_icons: ^1.0.3
+  dio: ^4.0.6
   flutter:
     sdk: flutter
   http: ^0.13.4
 
 dev_dependencies:
+  faker: ^2.0.0
   flutter_test:
     sdk: flutter
+  mockito: ^5.0.17
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -67,7 +70,6 @@ flutter:
     - family: OpenSans
       fonts:
         - asset: assets/fonts/OpenSans-Regular.ttf
-
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
