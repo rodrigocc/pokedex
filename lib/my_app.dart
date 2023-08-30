@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:pokemon_consome_api/presenter/pages/initial_page.dart';
+import 'package:pokemon_consome_api/presenter/pages/splash_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -8,9 +7,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(),
-      home: const InitialPage(title: 'Pokemon Consume API'),
-    );
+        title: 'Flutter Demo', theme: ThemeData(), home: SplashPage(title: ''));
   }
 }

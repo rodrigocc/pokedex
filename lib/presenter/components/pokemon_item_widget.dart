@@ -1,28 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/presenter/pages/pokemon_details_page.dart';
 
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 import 'package:pokemon_consome_api/theme/pokemon_icons.dart';
 
-class PokemonListTile extends StatefulWidget {
-  final String imgUrl;
-  final String name;
-  final String number;
-  final List<dynamic> type;
+import '../../data/models/pokemon.dart';
 
-  const PokemonListTile({
+class PokemonItemWidget extends StatefulWidget {
+  final Pokemon pokemon;
+  final int index;
+
+  const PokemonItemWidget({
     Key? key,
-    required this.imgUrl,
-    required this.name,
-    required this.number,
-    required this.type,
+    required this.pokemon,
+    required this.index,
   }) : super(key: key);
 
   @override
-  _PokemonListTileState createState() => _PokemonListTileState();
+  _PokemonItemWidgetState createState() => _PokemonItemWidgetState();
 }
 
-class _PokemonListTileState extends State<PokemonListTile> {
+class _PokemonItemWidgetState extends State<PokemonItemWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,11 +30,11 @@ class _PokemonListTileState extends State<PokemonListTile> {
               Row(
                 children: [
                   Hero(
-                    tag: '${widget.number}',
+                    tag: '${widget.pokemon.num}',
                     child: Image.network(
-                      widget.imgUrl,
-                      height: 100,
-                      width: 100,
+                      widget.pokemon.image,
+                      height: 80,
+                      width: 80,
                       errorBuilder: (BuildContext context, Object exception,
                           StackTrace? stackTrace) {
                         return Text('Image not Loaded');
@@ -51,7 +48,7 @@ class _PokemonListTileState extends State<PokemonListTile> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        widget.name,
+                        widget.pokemon.name,
                         style: TextStyle(
                             color: pokemonNameColor,
                             fontFamily: 'OpenSans',
@@ -59,7 +56,7 @@ class _PokemonListTileState extends State<PokemonListTile> {
                             fontWeight: FontWeight.w500),
                       ),
                       Text(
-                        '#${widget.number}',
+                        '#${widget.pokemon.num}',
                         style: TextStyle(
                           fontSize: 15,
                           fontFamily: 'OpenSans',
@@ -71,25 +68,20 @@ class _PokemonListTileState extends State<PokemonListTile> {
                     child: Text(''),
                   ),
                   Row(
-                    children: getPokemonType(widget.type),
+                    children: getPokemonType(widget.pokemon.type),
                   ),
                 ],
               ),
-              Divider(
-                color: Colors.black45,
-              )
             ],
           )),
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) => PokemonDetailsPage(
-                      type: widget.type,
-                      imgUrl: widget.imgUrl,
-                      number: widget.number,
-                      name: widget.name,
-                    )));
+        // Navigator.push(
+        //     context,
+        //     // MaterialPageRoute(
+        //     //     builder: (_) => PokemonDetailsPage(
+        //     //           type: widget.pokemon.type,
+
+        //     //         )));
       },
     );
   }

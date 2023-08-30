@@ -1,18 +1,21 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/presenter/pages/pokedex_page.dart';
+import 'package:pokemon_consome_api/data/repositories/pokemon_repository.dart';
+import 'package:pokemon_consome_api/presenter/%20container/home_container.dart';
+
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 
-class InitialPage extends StatefulWidget {
-  const InitialPage({Key? key, required this.title}) : super(key: key);
+class SplashPage extends StatefulWidget {
+  const SplashPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<InitialPage> createState() => _InitialPageState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _InitialPageState extends State<InitialPage> {
+class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
@@ -21,7 +24,10 @@ class _InitialPageState extends State<InitialPage> {
         seconds: 5,
       ),
     ).then((value) => Navigator.push(
-        context, CupertinoPageRoute(builder: (_) => PokeDexPage())));
+        context,
+        CupertinoPageRoute(
+            builder: (_) =>
+                HomeContainer(repository: PokemonRepository(dio: Dio())))));
   }
 
   @override

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 
 class PokeDexAppBar extends StatefulWidget implements PreferredSizeWidget {
-  PokeDexAppBar({Key? key}) : super(key: key);
+  final ValueChanged<String>? onChanged;
+
+  PokeDexAppBar({Key? key, required this.onChanged}) : super(key: key);
 
   @override
   _PokeDexAppBarState createState() => _PokeDexAppBarState();
@@ -30,13 +32,17 @@ class _PokeDexAppBarState extends State<PokeDexAppBar> {
               fontSize: 20,
             ),
           ),
-          Container(
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(18),
-              color: Colors.white,
+          SizedBox(
+            width: MediaQuery.of(context).size.width * 0.9,
+            child: TextField(
+              onChanged: widget.onChanged,
+              decoration: InputDecoration(
+                prefixIcon: Icon(Icons.search),
+                border:
+                    OutlineInputBorder(borderRadius: BorderRadius.circular(25)),
+                labelText: 'Digite o nome do pokemon',
+              ),
             ),
-            child: Text('Teste'),
           )
         ],
       ),

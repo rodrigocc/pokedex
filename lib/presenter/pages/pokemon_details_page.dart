@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
+import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
-  final String imgUrl;
-  final String number;
-  final String name;
+  final Pokemon pokemon;
   final List<dynamic> type;
 
-  PokemonDetailsPage(
-      {Key? key,
-      required this.imgUrl,
-      required this.number,
-      required this.name,
-      required this.type})
-      : super(key: key);
+  PokemonDetailsPage({
+    Key? key,
+    required this.pokemon,
+    required this.type,
+  }) : super(key: key);
 
   @override
   _PokemonDetailsPageState createState() => _PokemonDetailsPageState();
@@ -47,7 +44,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                 height: MediaQuery.of(context).size.height * 0.75,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  widget.name,
+                  widget.pokemon.name,
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.black,
@@ -59,9 +56,9 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
           Positioned(
             left: 100,
             child: Hero(
-                tag: '${widget.number}',
+                tag: '${widget.pokemon.num}',
                 child: Image.network(
-                  widget.imgUrl,
+                  widget.pokemon.image,
                   fit: BoxFit.contain,
                   width: 200,
                 )),
