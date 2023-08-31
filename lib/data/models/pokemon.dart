@@ -50,41 +50,53 @@ class Pokemon extends HiveObject {
   static Color? _color({required String type}) {
     switch (type) {
       case 'Normal':
-        return Colors.brown[400];
+        return Color(0xffFFE0CA);
+        ;
       case 'Fire':
-        return Colors.red;
+        return Color(0xffEC8C4C);
       case 'Water':
-        return Colors.blue;
+        return Color(0xff20C5F5);
       case 'Grass':
         return pokemoTypeGrassColor;
       case 'Electric':
-        return Colors.amber;
+        return Color(0xffFCF47C);
+
       case 'Ice':
         return Colors.cyanAccent[400];
       case 'Fighting':
-        return Colors.orange;
+        return Color(0xffB8B8B8);
+
       case 'Poison':
-        return Colors.purple;
+        return Color(0xffDDA1E7);
+
       case 'Ground':
-        return Colors.orange[300];
+        return Color(0xff9E6E53);
+
       case 'Flying':
-        return Colors.indigo[200];
+        return Color(0xffA98DF8);
       case 'Psychic':
-        return Colors.pink;
+        return Color(0xffA98DF8);
+
       case 'Bug':
-        return Colors.lightGreen[500];
+        return Color(0xffD0EC94);
+
       case 'Rock':
-        return Colors.grey;
+        return Color(0xff9A8371);
+
       case 'Ghost':
-        return Colors.indigo[400];
+        return Color(0xffCDCDCD);
+
       case 'Dark':
-        return Colors.brown;
+        return Color(0xff8D8ECB);
+
       case 'Dragon':
-        return Colors.indigo[800];
+        return Color(0xffB7DBFF);
       case 'Steel':
-        return Colors.blueGrey;
+        return Color(0xff7A95AA);
+
       case 'Fairy':
-        return Colors.pinkAccent[100];
+        return Color(0xffFDB7DA);
+
       default:
         return Colors.grey;
     }

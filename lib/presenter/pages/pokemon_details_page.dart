@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
+import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 
 class PokemonDetailsPage extends StatefulWidget {
   final Pokemon pokemon;
@@ -25,7 +26,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      backgroundColor: getPokemonColorBg(widget.type),
+      backgroundColor: widget.pokemon.baseColor,
       body: Stack(
         children: [
           Column(
@@ -66,44 +67,5 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
         ],
       ),
     );
-  }
-
-  Color getPokemonColorBg(List<dynamic> type) {
-    Color currentColor = Colors.transparent;
-    int index;
-    for (index = 0; index < type.length; index++) {
-      if (type[index] == 'Fire') {
-        return Colors.red;
-      } else if (type[index] == "Grass") {
-        currentColor = Colors.green;
-      } else if (type[index] == "Poison") {
-        currentColor = Colors.deepPurple;
-      } else if (type[index] == "Ice") {
-        currentColor = Colors.blueGrey;
-      } else if (type[index] == "Flying") {
-        currentColor = Colors.lightBlue;
-      } else if (type[index] == "Water") {
-        currentColor = Colors.blue;
-      } else if (type[index] == "Ground") {
-        currentColor = Colors.orangeAccent;
-      } else if (type[index] == "Rock") {
-        currentColor = Colors.brown;
-      } else if (type[index] == "Electric") {
-        currentColor = Colors.yellowAccent;
-      } else if (type[index] == "Normal") {
-        currentColor = Colors.grey;
-      } else if (type[index] == "Fighting") {
-        currentColor = Colors.orange;
-      } else if (type[index] == "Bug") {
-        currentColor = Colors.greenAccent;
-      } else if (type[index][0] == "Psychic") {
-        currentColor = Colors.purpleAccent;
-      } else if (type[index][0] == "Fairy") {
-        currentColor = Colors.yellow;
-      } else if (type[index][0] == "Dragon") {
-        currentColor = Colors.blueAccent;
-      }
-    }
-    return currentColor;
   }
 }

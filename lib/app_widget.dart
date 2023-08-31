@@ -5,7 +5,10 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'My Smart App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+          bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              selectedItemColor: Colors.red,
+              selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold))),
       routerConfig: Modular.routerConfig,
     ); //added by extension
   }

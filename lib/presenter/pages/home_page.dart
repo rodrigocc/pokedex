@@ -38,15 +38,27 @@ class _HomePageState extends State<HomePage> {
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Image.asset(
+                'assets/icons/home_icon.png',
+                height: 50,
+                width: 50,
+              ),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.business),
+              icon: Image.asset(
+                'assets/icons/pokeball_icon.png',
+                height: 50,
+                width: 50,
+              ),
               label: 'Favorites',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.school),
+              icon: Image.asset(
+                'assets/icons/perfil_icon.png',
+                height: 50,
+                width: 50,
+              ),
               label: 'Perfil',
             ),
           ],

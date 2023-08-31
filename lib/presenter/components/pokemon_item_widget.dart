@@ -39,78 +39,74 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
-        margin: EdgeInsets.symmetric(vertical: 16),
-        decoration: BoxDecoration(
-            color: widget.pokemon.baseColor,
-            borderRadius: BorderRadius.circular(32)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '#${widget.pokemon.num}',
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontFamily: 'OpenSans',
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+          margin: EdgeInsets.symmetric(vertical: 16),
+          decoration: BoxDecoration(
+              color: widget.pokemon.baseColor,
+              borderRadius: BorderRadius.circular(32)),
+          child: Stack(
+            alignment: Alignment.centerRight,
+            children: [
+              Image.asset("assets/images/pokeball.png",
+                  height: 110, width: 110),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '#${widget.pokemon.num}',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'OpenSans',
+                            ),
+                          ),
+                          Text(
+                            widget.pokemon.name,
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'OpenSans',
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: getPokemonType(widget.pokemon.type),
+                          ),
+                        ],
                       ),
-                    ),
-                    Text(
-                      widget.pokemon.name,
-                      style: TextStyle(
-                          color: pokemonNameColor,
-                          fontFamily: 'OpenSans',
-                          fontSize: 19,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    Row(
-                      children: getPokemonType(widget.pokemon.type),
-                    ),
-                  ],
-                ),
-                Hero(
-                  tag: '${widget.pokemon.num}',
-                  child: Image.network(
-                    widget.pokemon.image,
-                    height: 80,
-                    width: 80,
-                    errorBuilder: (BuildContext context, Object exception,
-                        StackTrace? stackTrace) {
-                      return Text('Image not Loaded');
-                    },
+                      Hero(
+                        tag: '${widget.pokemon.num}',
+                        child: Image.network(
+                          widget.pokemon.image,
+                          height: 100,
+                          width: 100,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                            return Text('Image not Loaded');
+                          },
+                        ),
+                      ),
+                      GestureDetector(
+                        child: widget.pokemon.favoritedStatus
+                            ? Icon(
+                                Icons.favorite,
+                                size: 50,
+                              )
+                            : Icon(Icons.favorite_border_outlined, size: 35),
+                        onTap: widget.onTap,
+                      )
+                    ],
                   ),
-                ),
-                GestureDetector(
-                  child: widget.pokemon.favoritedStatus
-                      ? Icon(Icons.favorite)
-                      : Icon(Icons.favorite_border_outlined),
-                  onTap: widget.onTap,
-                )
-              ],
-            ),
-            Row(
-              children: [
-                SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [],
-                ),
-                Expanded(
-                  child: Text(''),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+                ],
+              ),
+            ],
+          )),
       onTap: () {
         Navigator.push(
             context,
