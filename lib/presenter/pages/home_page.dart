@@ -26,13 +26,27 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        bottomNavigationBar: BottomNavigationBar(items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ]),
         body: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: ListView(
-          children: widget.list
-              .map((element) => PokemonItemWidget(
-                  pokemon: element, index: widget.list.indexOf(element)))
-              .toList()),
-    ));
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          child: ListView(
+              children: widget.list
+                  .map((element) => PokemonItemWidget(
+                      pokemon: element, index: widget.list.indexOf(element)))
+                  .toList()),
+        ));
   }
 }

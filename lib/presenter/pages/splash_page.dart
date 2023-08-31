@@ -1,8 +1,5 @@
-import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pokemon_consome_api/data/repositories/pokemon_repository.dart';
-import 'package:pokemon_consome_api/presenter/%20container/home_container.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:pokemon_consome_api/theme/pokedex_colors.dart';
 
@@ -23,11 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       Duration(
         seconds: 5,
       ),
-    ).then((value) => Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (_) =>
-                HomeContainer(repository: PokemonRepository(dio: Dio())))));
+    ).then((value) => Modular.to.navigate('/home'));
   }
 
   @override

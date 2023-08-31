@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../theme/pokedex_colors.dart';
+
 class Pokemon {
   final String name;
   final List<String> type;
@@ -38,7 +40,7 @@ class Pokemon {
       case 'Water':
         return Colors.blue;
       case 'Grass':
-        return Colors.green;
+        return pokemoTypeGrassColor;
       case 'Electric':
         return Colors.amber;
       case 'Ice':
