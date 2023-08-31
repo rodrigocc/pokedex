@@ -9,11 +9,13 @@ import '../pages/pokemon_details_page.dart';
 class PokemonItemWidget extends StatefulWidget {
   final Pokemon pokemon;
   final int index;
+  final Function() onTap;
 
   const PokemonItemWidget({
     Key? key,
     required this.pokemon,
     required this.index,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,18 @@ class PokemonItemWidget extends StatefulWidget {
 }
 
 class _PokemonItemWidgetState extends State<PokemonItemWidget> {
+  List<Pokemon> favoritedList = [];
+
+  void _favoritePokemon() {
+    setState(() {
+      widget.pokemon.favoritedStatus = !widget.pokemon.favoritedStatus;
+    });
+
+    favoritedList.add(widget.pokemon);
+
+    print(favoritedList);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -72,6 +86,12 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
                     },
                   ),
                 ),
+                GestureDetector(
+                  child: widget.pokemon.favoritedStatus
+                      ? Icon(Icons.favorite)
+                      : Icon(Icons.favorite_border_outlined),
+                  onTap: widget.onTap,
+                )
               ],
             ),
             Row(

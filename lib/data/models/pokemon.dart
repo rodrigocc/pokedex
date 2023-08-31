@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import '../../theme/pokedex_colors.dart';
 
-class Pokemon {
+class Pokemon extends HiveObject {
   final String name;
   final List<String> type;
   final int id;
   final String num;
+  @HiveField(1)
+  bool favoritedStatus;
 
   factory Pokemon.fromMap(Map<String, dynamic> json) {
     return Pokemon(
@@ -22,14 +25,15 @@ class Pokemon {
   }
 
   Color? get baseColor => _color(type: type[0]);
+
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
-  Pokemon({
-    required this.name,
-    required this.type,
-    required this.id,
-    required this.num,
-  });
+  Pokemon(
+      {required this.name,
+      required this.type,
+      required this.id,
+      required this.num,
+      this.favoritedStatus = false});
 
   static Color? _color({required String type}) {
     switch (type) {

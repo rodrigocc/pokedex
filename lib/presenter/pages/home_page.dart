@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 import '../components/pokemon_item_widget.dart';
@@ -18,6 +19,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Box<List<Pokemon>> _favoritesBox = Hive.box<List<Pokemon>>('favorites');
+  int _currentBottomNavItemIndex = 0;
+  void _setBottomNavIndex(int index) {
+    setState(() {
+      _currentBottomNavItemIndex = index;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -26,27 +35,55 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: BottomNavigationBar(items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.business),
-            label: 'Business',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
-          ),
-        ]),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          child: ListView(
-              children: widget.list
-                  .map((element) => PokemonItemWidget(
-                      pokemon: element, index: widget.list.indexOf(element)))
-                  .toList()),
+        bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.business),
+              label: 'Favorites',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.school),
+              label: 'Perfil',
+            ),
+          ],
+          currentIndex: _currentBottomNavItemIndex,
+          onTap: _setBottomNavIndex,
+        ),
+        body: ValueListenableBuilder(
+          valueListenable: _favoritesBox.listenable(),
+          builder: (_, Box<List<Pokemon>> box, child) {
+            return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: ListView.builder(
+                  itemBuilder: (_, index) => PokemonItemWidget(
+                    pokemon: widget.list[index],
+                    index: widget.list.indexOf(widget.list[index]),
+                    onTap: () async {
+                      widget.list[index].favoritedStatus
+                          ? await box.delete(index)
+                          : await _favoritesBox.add(widget.list);
+
+                      setState(() {
+                        print(_favoritesBox);
+                      });
+                    },
+                  ),
+                  itemCount: widget.list.length,
+                ));
+          },
         ));
+
+    // Padding(
+    //   padding: const EdgeInsets.symmetric(horizontal: 8),
+    //   child: ListView(
+    //       children: widget.list
+    //           .map((element) => PokemonItemWidget(
+    //               pokemon: element, index: widget.list.indexOf(element)))
+    //           .toList()),
+    // ));
   }
 }
