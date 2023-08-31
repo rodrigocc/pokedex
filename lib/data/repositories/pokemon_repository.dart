@@ -1,28 +1,18 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:pokemon_consome_api/common/error/failure.dart';
+
+import 'package:pokemon_consome_api/data/datasources/pokemon_datasource.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
-import '../../common/consts/api_consts.dart';
-
-abstract class IPokemonRepository {
-  Future<List<Pokemon>> getAllPokemons();
+abstract class PokemonRepository {
+  Future<(List<Pokemon>?, Failure?)> getAllPokemons();
 }
 
-class PokemonRepository implements IPokemonRepository {
-  final Dio dio;
+class PokemonRepositoryImpl implements PokemonRepository {
+  final PokemonDatasource pokemonDatasource;
 
-  PokemonRepository({required this.dio});
+  PokemonRepositoryImpl({required this.pokemonDatasource});
+
   @override
-  Future<List<Pokemon>> getAllPokemons() async {
-    try {
-      final response = await dio.get(ApiConsts.allPokemonsURL);
-      final json = jsonDecode(response.data) as Map<String, dynamic>;
-      final list = json['pokemon'] as List<dynamic>;
-      return list.map((e) => Pokemon.fromMap(e)).toList();
-    } catch (e) {
-      throw Failure(message: 'Não foi possível carregar os dados');
-    }
-  }
+  Future<(List<Pokemon>?, Failure?)> getAllPokemons() =>
+      pokemonDatasource.getAllPokemons();
 }

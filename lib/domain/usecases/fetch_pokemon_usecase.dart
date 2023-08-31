@@ -1,5 +1,6 @@
+import 'package:pokemon_consome_api/common/error/failure.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
-abstract class FetchPokemon {
-  Future<List<Pokemon>> fetchPokemons();
+abstract class FetchPokemonUseCase {
+  Future<(List<Pokemon>?, Failure?)> call();
 }

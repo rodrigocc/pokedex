@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
@@ -10,6 +12,16 @@ class Pokemon extends HiveObject {
   final String num;
   @HiveField(1)
   bool favoritedStatus;
+
+  static List<Pokemon> fromList(String value) {
+    final map = json.decode(value);
+    List<Pokemon> pokemonList = [];
+    for (dynamic json in map['pokemon']) {
+      pokemonList.add(Pokemon.fromMap(json));
+    }
+
+    return pokemonList;
+  }
 
   factory Pokemon.fromMap(Map<String, dynamic> json) {
     return Pokemon(
