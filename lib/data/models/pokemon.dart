@@ -1,17 +1,33 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 
 import '../../theme/pokedex_colors.dart';
 
-class Pokemon extends HiveObject {
-  final String name;
-  final List<String> type;
+part 'pokemon.g.dart';
+
+@HiveType(typeId: 0)
+class Pokemon extends Equatable {
   @HiveField(0)
-  final int id;
-  final String num;
-  bool favoritedStatus;
+  final String? name;
+  @HiveField(1)
+  final List<String>? type;
+  @HiveField(2)
+  final int? id;
+  @HiveField(3)
+  final String? num;
+  @HiveField(4)
+  bool? favoritedStatus;
+
+  Pokemon(
+      {required this.name,
+      required this.type,
+      required this.id,
+      required this.num,
+      this.favoritedStatus = false});
 
   static List<Pokemon> fromList(String value) {
     final map = json.decode(value);
@@ -25,27 +41,22 @@ class Pokemon extends HiveObject {
 
   factory Pokemon.fromMap(Map<String, dynamic> json) {
     return Pokemon(
-      name: json['name'],
-      id: json['id'],
-      num: json['num'],
+      name: json['name'] ?? '',
+      id: json['id'] ?? '',
+      num: json['num'] ?? '',
       type: (json['type'] as List<dynamic>)
-          .map(
-            (e) => e as String,
-          )
-          .toList(),
+              .map(
+                (e) => e as String,
+              )
+              .toList() ??
+          [],
     );
   }
 
-  Color? get baseColor => _color(type: type[0]);
+  Color? get baseColor => _color(type: type![0]);
 
   String get image =>
       'https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/$num.png';
-  Pokemon(
-      {required this.name,
-      required this.type,
-      required this.id,
-      required this.num,
-      this.favoritedStatus = false});
 
   static Color? _color({required String type}) {
     switch (type) {
@@ -100,5 +111,16 @@ class Pokemon extends HiveObject {
       default:
         return Colors.grey;
     }
+  }
+
+  @override
+  List<Object> get props {
+    return [
+      name!,
+      type!,
+      id!,
+      num!,
+      favoritedStatus!,
+    ];
   }
 }

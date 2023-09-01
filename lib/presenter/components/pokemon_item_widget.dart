@@ -9,13 +9,12 @@ import '../pages/pokemon_details_page.dart';
 
 class PokemonItemWidget extends StatefulWidget {
   final Pokemon pokemon;
-  final int index;
+
   final Function() onTap;
 
   const PokemonItemWidget({
     Key? key,
     required this.pokemon,
-    required this.index,
     required this.onTap,
   }) : super(key: key);
 
@@ -57,7 +56,7 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
                             ),
                           ),
                           Text(
-                            widget.pokemon.name,
+                            widget.pokemon.name!,
                             style: TextStyle(
                                 color: Colors.black,
                                 fontFamily: 'OpenSans',
@@ -66,7 +65,7 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
-                            children: getPokemonType(widget.pokemon.type),
+                            children: getPokemonType(widget.pokemon.type!),
                           ),
                         ],
                       ),
@@ -103,7 +102,7 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
             context,
             MaterialPageRoute(
                 builder: (_) => PokemonDetailsPage(
-                      type: widget.pokemon.type,
+                      type: widget.pokemon.type!,
                       pokemon: widget.pokemon,
                     )));
       },

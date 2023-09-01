@@ -45,7 +45,7 @@ class _PokemonDetailsPageState extends State<PokemonDetailsPage> {
                 height: MediaQuery.of(context).size.height * 0.75,
                 width: MediaQuery.of(context).size.width,
                 child: Text(
-                  widget.pokemon.name,
+                  widget.pokemon.name!,
                   style: TextStyle(
                     fontSize: 30,
                     color: Colors.black,

@@ -5,7 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokemon_consome_api/app_module.dart';
 import 'package:pokemon_consome_api/app_widget.dart';
-import 'package:pokemon_consome_api/data/adapters/pokemon_adapter.dart';
+
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 void main() async {

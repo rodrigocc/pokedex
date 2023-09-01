@@ -22,8 +22,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Box<Pokemon> _favoritesBox = Hive.box<Pokemon>('favorites');
 
-  void _favoritePokemon() {}
-
   @override
   void initState() {
     super.initState();
@@ -42,7 +40,6 @@ class _HomePageState extends State<HomePage> {
                 final pokemon = widget.list[index];
                 return PokemonItemWidget(
                   pokemon: pokemon,
-                  index: widget.list.indexOf(pokemon),
                   onTap: () async {
                     _favoritesBox.containsKey(pokemon.id)
                         ? _favoritesBox.delete(pokemon.id)

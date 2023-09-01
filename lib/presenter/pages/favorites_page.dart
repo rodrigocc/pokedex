@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pokemon_consome_api/data/local_storage/local_storage_repository.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 import '../components/pokemon_item_widget.dart';
@@ -29,20 +30,22 @@ class _FavoritesPageState extends State<FavoritesPage> {
         body: ValueListenableBuilder(
       valueListenable: _favoritesBox.listenable(),
       builder: (_, Box<Pokemon> box, child) {
-        List<Pokemon> favorites = List.from(box.values);
+        List<Pokemon> favoritePokemons =
+            LocalStorageRepository().getFavoriteList(box);
         return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ListView.builder(
-              itemBuilder: (_, index) => PokemonItemWidget(
-                pokemon: favorites[index],
-                index: favorites.indexOf(favorites[index]),
-                onTap: () async {
-                  setState(() {
-                    print(_favoritesBox);
-                  });
-                },
-              ),
-              itemCount: favorites.length,
+              itemBuilder: (_, index) {
+                return PokemonItemWidget(
+                  pokemon: favoritePokemons[index],
+                  onTap: () async {
+                    setState(() {
+                      print(_favoritesBox);
+                    });
+                  },
+                );
+              },
+              itemCount: favoritePokemons.length,
             ));
       },
     ));
