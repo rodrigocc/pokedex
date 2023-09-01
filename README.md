@@ -1,6 +1,5 @@
 # pokemon_consome_api
-
-A new Flutter project
+Projeto Lista de Pokemons
 ## Getting Started
 
 Projeto Criado para um teste da  Guarani Sistemas 
