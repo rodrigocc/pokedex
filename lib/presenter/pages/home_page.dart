@@ -56,19 +56,4 @@ class _HomePageState extends State<HomePage> {
       },
     ));
   }
-
-  void savePokemon(Pokemon pokemon) {
-    _favoritesBox.put(pokemon.id, pokemon);
-
-    favoriteList.add(pokemon);
-
-    print(favoriteList);
-  }
-
-  void deletePokemon(Pokemon pokemon) {
-    _favoritesBox.delete(pokemon.id);
-    favoriteList.remove(pokemon);
-
-    print(favoriteList);
-  }
 }
