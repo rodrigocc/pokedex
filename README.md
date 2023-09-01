@@ -3,8 +3,7 @@
 A new Flutter project
 ## Getting Started
 
-Projeto Criado para criação de Pokedex Baseado em Ui Design do Drible ,
-Consumindo dados da Api Rest PokeApi
+Projeto Criado para um teste da  Guarani Sistemas 
 .
 
 A few resources to get you started if this is your first Flutter project:
