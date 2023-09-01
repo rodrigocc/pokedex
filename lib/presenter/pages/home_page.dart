@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:pokemon_consome_api/common/consts/favorite_list.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 import '../components/pokemon_item_widget.dart';
@@ -57,14 +58,20 @@ class _HomePageState extends State<HomePage> {
             ));
       },
     ));
+  }
 
-    // Padding(
-    //   padding: const EdgeInsets.symmetric(horizontal: 8),
-    //   child: ListView(
-    //       children: widget.list
-    //           .map((element) => PokemonItemWidget(
-    //               pokemon: element, index: widget.list.indexOf(element)))
-    //           .toList()),
-    // ));
+  void savePokemon(Pokemon pokemon) {
+    _favoritesBox.put(pokemon.id, pokemon);
+
+    favoriteList.add(pokemon);
+
+    print(favoriteList);
+  }
+
+  void deletePokemon(Pokemon pokemon) {
+    _favoritesBox.delete(pokemon.id);
+    favoriteList.remove(pokemon);
+
+    print(favoriteList);
   }
 }

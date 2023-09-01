@@ -12,26 +12,37 @@ class NavigationBarMenu extends StatefulWidget {
 }
 
 class _NavigationBarMenuState extends State<NavigationBarMenu> {
-  int _currentPageIndex = 0;
+  int _currentBottomNavItemIndex = 0;
+  late PageController _pageController;
 
   void _onPageChanged(int index) {
     setState(() {
-      _currentPageIndex = index;
+      _currentBottomNavItemIndex = index;
+      _pageController.animateToPage(_currentBottomNavItemIndex,
+          curve: Curves.linear, duration: const Duration(milliseconds: 500));
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        controller: _pageController,
         children: [
           HomeContainer(pokemonUseCase: Modular.get()),
           FavoritesPage(),
           PerfilPage(),
         ],
-        onPageChanged: _onPageChanged,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentBottomNavItemIndex,
+        onTap: _onPageChanged,
         items: [
           BottomNavigationBarItem(
             icon: Image.asset(
@@ -58,8 +69,6 @@ class _NavigationBarMenuState extends State<NavigationBarMenu> {
             label: 'Perfil',
           ),
         ],
-        currentIndex: _currentPageIndex,
-        onTap: _onPageChanged,
       ),
     );
   }

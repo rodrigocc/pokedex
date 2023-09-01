@@ -37,12 +37,6 @@ class _FavoritesPageState extends State<FavoritesPage> {
                 pokemon: favorites[index],
                 index: favorites.indexOf(favorites[index]),
                 onTap: () async {
-                  favorites[index].favoritedStatus =
-                      !favorites[index].favoritedStatus;
-                  favorites[index].favoritedStatus
-                      ? await box.delete(index)
-                      : await _favoritesBox.add(favorites[index]);
-
                   setState(() {
                     print(_favoritesBox);
                   });
