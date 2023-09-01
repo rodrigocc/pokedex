@@ -9,10 +9,10 @@ import 'package:pokemon_consome_api/data/adapters/pokemon_adapter.dart';
 import 'package:pokemon_consome_api/data/models/pokemon.dart';
 
 void main() async {
-  var path = Directory.current.path;
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
   Hive.registerAdapter(PokemonAdapter());
-  await Hive.openBox<List<Pokemon>>('favorites');
+  await Hive.openBox<Pokemon>('favorites');
   runApp(ModularApp(module: AppModule(), child: AppWidget()));
 }

@@ -22,7 +22,7 @@ class AnimatedBuilderDemoState extends State<SplashPage>
     );
 
     _controller.forward().then((value) {
-      Modular.to.navigate('/home');
+      Modular.to.navigate('/navigation');
     });
   }
 

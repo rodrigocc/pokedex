@@ -6,6 +6,7 @@ import 'package:pokemon_consome_api/data/repositories/pokemon_repository.dart';
 import 'package:pokemon_consome_api/domain/usecases/fetch_pokemon_usecase.dart';
 import 'package:pokemon_consome_api/gateway/http_adapter/http_adapter.dart';
 import 'package:pokemon_consome_api/presenter/%20container/home_container.dart';
+import 'package:pokemon_consome_api/presenter/components/navigation_menu.dart';
 import 'package:pokemon_consome_api/presenter/pages/pokemon_details_page.dart';
 import 'package:pokemon_consome_api/presenter/pages/splash_page.dart';
 
@@ -23,6 +24,11 @@ class AppModule extends Module {
     r.child(
       '/',
       child: (_) => SplashPage(),
+    );
+
+    r.child(
+      '/navigation',
+      child: (_) => NavigationBarMenu(),
     );
     r.child(
       '/home',

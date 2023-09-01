@@ -4,9 +4,10 @@ import 'package:pokemon_consome_api/data/models/pokemon.dart';
 class PokemonAdapter extends TypeAdapter<Pokemon> {
   @override
   Pokemon read(BinaryReader reader) {
-    final pokemonFavorites = reader.read();
+    final fields = reader.readByte();
+    final id = reader.read();
 
-    return pokemonFavorites;
+    return Pokemon(name: '', type: [], id: id, num: '');
   }
 
   @override
@@ -15,6 +16,7 @@ class PokemonAdapter extends TypeAdapter<Pokemon> {
 
   @override
   void write(BinaryWriter writer, Pokemon obj) {
-    writer.write(obj);
+    writer.writeByte(1);
+    writer.write(obj.id);
   }
 }

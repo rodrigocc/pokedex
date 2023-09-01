@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 
 import 'package:pokemon_consome_api/theme/pokemon_icons.dart';
 
@@ -23,18 +24,7 @@ class PokemonItemWidget extends StatefulWidget {
 }
 
 class _PokemonItemWidgetState extends State<PokemonItemWidget> {
-  List<Pokemon> favoritedList = [];
-
-  void _favoritePokemon() {
-    setState(() {
-      widget.pokemon.favoritedStatus = !widget.pokemon.favoritedStatus;
-    });
-
-    favoritedList.add(widget.pokemon);
-
-    print(favoritedList);
-  }
-
+  Box<Pokemon> _favoritesBox = Hive.box<Pokemon>('favorites');
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -93,10 +83,11 @@ class _PokemonItemWidgetState extends State<PokemonItemWidget> {
                         ),
                       ),
                       GestureDetector(
-                        child: widget.pokemon.favoritedStatus
+                        child: _favoritesBox.containsKey(widget.pokemon.id)
                             ? Icon(
                                 Icons.favorite,
-                                size: 50,
+                                size: 35,
+                                color: Colors.red,
                               )
                             : Icon(Icons.favorite_border_outlined, size: 35),
                         onTap: widget.onTap,

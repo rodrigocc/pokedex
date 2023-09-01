@@ -8,9 +8,9 @@ import '../../theme/pokedex_colors.dart';
 class Pokemon extends HiveObject {
   final String name;
   final List<String> type;
+  @HiveField(0)
   final int id;
   final String num;
-  @HiveField(1)
   bool favoritedStatus;
 
   static List<Pokemon> fromList(String value) {
