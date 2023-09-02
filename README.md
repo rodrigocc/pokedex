@@ -14,7 +14,7 @@
 
 
 ![Mobile Screenshot 1](https://media0.giphy.com/media/fXspMzmTaLlOc8qLLd/giphy.gif)
-![Mobile Screenshot 2](https://media2.giphy.com/media/ek6zcnAysV5h9kTNx4/giphy.gif)
+![Mobile Screenshot 2](https://media0.giphy.com/media/fXspMzmTaLlOc8qLLd/giphy.gif)
 
 ## <p align='center'>@rodrigocc</p>
 
